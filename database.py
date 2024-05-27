@@ -8,8 +8,6 @@ from urllib.parse import quote
 
 
 
-
-
 POSTGRES_USER = "gimsanghae"
 POSTGRES_PASSWORD = quote("Rlatld147@@@") # 패스워드에 특수문자가 있으므로 quote 함수로 인코딩
 POSTGRES_HOST = "localhost"

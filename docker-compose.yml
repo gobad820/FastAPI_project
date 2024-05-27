@@ -1,0 +1,23 @@
+version: '3.11'
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: gimsanghae
+      POSTGRES_PASSWORD: Rlatld147@@
+      POSTGRES_DB: todo
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  web:
+    build: .
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+    volumes:
+      - .:/app
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://gimsanghae:Rlatld147@@db:5432/todo
+volumes:
+  postgres_data:

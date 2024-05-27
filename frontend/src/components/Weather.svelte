@@ -72,15 +72,17 @@
     function getWeatherEmoji(description) {
         switch (description.toLowerCase()) {
             case 'clear':
-                return '☀️';
+                return '☀';
             case 'clouds':
                 return '☁️';
             case 'rain':
                 return '🌧️';
-            // 추가적인 날씨 조건들...
+            case 'mist':
+                return '💧';
             default:
                 return '❓';
         }
+
     }
 </script>
 

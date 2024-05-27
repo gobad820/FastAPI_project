@@ -8,9 +8,9 @@
 
     const routes = {
         "/": Todo,
-        "/detail/:todo_id":Detail,
+        "/detail/:todo_id": Detail,
         '/todo-create': TodoCreate
     }
 </script>
-<Weather />
+<Weather/>
 <Router {routes}/>
