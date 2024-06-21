@@ -1,3 +1,6 @@
+from datetime import timedelta, datetime
+from typing import List
+
 from fastapi import APIRouter,Depends
 from sqlalchemy.orm import Session
 
@@ -30,3 +33,22 @@ def todo_create(_todo_create:todo_schema.TodoCreate,db:Session=Depends(get_db)):
 def todo_detail(todo_id: int, db:Session=Depends(get_db)):
     todo=todo_crud.get_todo(db,todo_id=todo_id)
     return todo
+
+
+@router.get("/todos/{day}", response_model=List[todo_schema.Todo])
+def read_todos(day: str, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    today = datetime.now().date()
+    if day == "today":
+        start_date = today
+        end_date = start_date + timedelta(days=1)
+    elif day == "tomorrow":
+        start_date = today + timedelta(days=1)
+        end_date = start_date + timedelta(days=1)
+    elif day == "later":
+        start_date = today + timedelta(days=2)
+        end_date = start_date + timedelta(days=100)  # or any large number
+    else:
+        return []
+
+    todos = todo_crud.get_todos_by_date(db, start_date, end_date, skip=skip, limit=limit)
+    return todos

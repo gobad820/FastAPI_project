@@ -28,3 +28,8 @@ def get_todo(db: Session, todo_id: int):
     todo = db.query(Todo).get(todo_id
                               )
     return todo
+
+
+def get_todos_by_date(db: Session, start_date: datetime, end_date: datetime, skip: int, limit: int):
+    todos = db.query(Todo).filter(Todo.due_date >= start_date, Todo.due_date < end_date).offset(skip).limit(limit).all()
+    return todos

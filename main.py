@@ -30,7 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(question_router.router)
+# app.include_router(question_router.router)
 app.include_router(todo_router.router)
 app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
 
@@ -39,7 +39,7 @@ app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
 async def index():
     return FileResponse("frontend/dist/index.html")
 
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+#
+# @app.get("/hello/{name}")
+# async def say_hello(name: str):
+#     return {"message": f"Hello {name}"}
