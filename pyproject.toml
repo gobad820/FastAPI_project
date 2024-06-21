@@ -6,7 +6,7 @@ authors = ["Kim Sanghae <pelikan@pusan.ac.kr>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "3.11.8"
 fastapi = "^0.111.0"
 uvicorn = "^0.29.0"
 sqlalchemy = "^2.0.30"
@@ -14,7 +14,7 @@ alembic = "^1.13.1"
 python-dateutil = "^2.9.0.post0"
 psycopg2 = "^2.9.9"
 psycopg2-binary = "^2.9.9"
-
+urllib3 = "^1.26.0"
 
 [build-system]
 requires = ["poetry-core"]
